@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+
 public class App {
 
     // variable to keep track of current index in the list
@@ -12,11 +13,11 @@ public class App {
         // create a list of top 5 things
         // --- TO DO: Change to your own list ---
         String[] top5 = {
-            "1. Coding",
-            "2. Music",
-            "3. Movies",
-            "4. Sports",
-            "5. Travel"
+            "1. Japan",
+            "2. Peru",
+            "3. Hawaii",
+            "4. Italy",
+            "5. London"
         };
 
          // A JFrame is a window where we can design our UI
@@ -51,6 +52,19 @@ public class App {
         }    });
 
         // --- TO DO: add event listener for back button ---
+        JButton backButton = new JButton("Back");
+        frame.add(backButton);
+
+        backButton.setBounds(250, 200, 100, 50);
+
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                currentIndex = getPreviousIndex(currentIndex, top5.length);
+                outputLabel.setText(top5[currentIndex]);
+            }    });
+
+
+        
         // --- TO DO: create a getPreviousIndex function, see below ---
 
 
@@ -81,5 +95,17 @@ public class App {
      * @return previous index
      */
     
+    public static int getPreviousIndex(int currentIndex, int listLength) {
+        if (currentIndex == 0) {
+            return listLength - 1; // wrap around to the start
+        }
+        else {
+            return currentIndex - 1; // move to the next index
+        }
+    }
+
+
+    
+
 }
 
